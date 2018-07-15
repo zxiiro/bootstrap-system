@@ -1,0 +1,25 @@
+---
+- name: Bootstrap system
+  hosts: localhost
+
+  tasks:
+    - name: Install development tools
+      package:
+        name:
+          - atom
+          - git
+          # Python
+          - python-tox
+          - python-virtualenv
+          - python-virtualenvwrapper
+          # VCSH
+          # - myrepos
+          # - vcsh
+        state: present
+      become: true
+
+    - name: Install ACPI for ZSH battery indicator
+      package:
+        name: acpi
+        state: present
+      become: true
